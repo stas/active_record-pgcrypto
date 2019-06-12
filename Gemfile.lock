@@ -1,0 +1,92 @@
+PATH
+  remote: .
+  specs:
+    active_record_pgcrypto (0.1.0)
+      activerecord
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    activemodel (5.2.3)
+      activesupport (= 5.2.3)
+    activerecord (5.2.3)
+      activemodel (= 5.2.3)
+      activesupport (= 5.2.3)
+      arel (>= 9.0)
+    activesupport (5.2.3)
+      concurrent-ruby (~> 1.0, >= 1.0.2)
+      i18n (>= 0.7, < 2)
+      minitest (~> 5.1)
+      tzinfo (~> 1.1)
+    arel (9.0.0)
+    ast (2.4.0)
+    concurrent-ruby (1.1.5)
+    diff-lcs (1.3)
+    docile (1.3.1)
+    ffaker (2.11.0)
+    i18n (1.6.0)
+      concurrent-ruby (~> 1.0)
+    jaro_winkler (1.5.2)
+    json (2.2.0)
+    minitest (5.11.3)
+    parallel (1.17.0)
+    parser (2.6.3.0)
+      ast (~> 2.4.0)
+    pg (1.1.4)
+    rainbow (3.0.0)
+    rake (12.3.2)
+    rspec (3.8.0)
+      rspec-core (~> 3.8.0)
+      rspec-expectations (~> 3.8.0)
+      rspec-mocks (~> 3.8.0)
+    rspec-core (3.8.0)
+      rspec-support (~> 3.8.0)
+    rspec-expectations (3.8.4)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.8.0)
+    rspec-mocks (3.8.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.8.0)
+    rspec-support (3.8.2)
+    rubocop (0.71.0)
+      jaro_winkler (~> 1.5.1)
+      parallel (~> 1.10)
+      parser (>= 2.6)
+      rainbow (>= 2.2.2, < 4.0)
+      ruby-progressbar (~> 1.7)
+      unicode-display_width (>= 1.4.0, < 1.7)
+    rubocop-performance (1.3.0)
+      rubocop (>= 0.68.0)
+    rubocop-rspec (1.33.0)
+      rubocop (>= 0.60.0)
+    ruby-progressbar (1.10.1)
+    simplecov (0.16.1)
+      docile (~> 1.1)
+      json (>= 1.8, < 3)
+      simplecov-html (~> 0.10.0)
+    simplecov-html (0.10.2)
+    thread_safe (0.3.6)
+    tzinfo (1.2.5)
+      thread_safe (~> 0.1)
+    unicode-display_width (1.6.0)
+    yard (0.9.19)
+    yardstick (0.9.9)
+      yard (~> 0.8, >= 0.8.7.2)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  active_record_pgcrypto!
+  bundler
+  ffaker
+  pg
+  rake
+  rspec
+  rubocop-performance
+  rubocop-rspec
+  simplecov
+  yardstick
+
+BUNDLED WITH
+   1.17.2

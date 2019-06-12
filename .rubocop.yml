@@ -1,0 +1,47 @@
+require:
+  - rubocop-performance
+  - rubocop-rspec
+
+RSpec:
+  Enabled: true
+
+RSpec/MultipleExpectations:
+  Enabled: false
+
+Performance:
+  Enabled: true
+
+Bundler:
+  Enabled: true
+
+Gemspec:
+  Enabled: true
+
+Style/StringLiterals:
+  Enabled: true
+  EnforcedStyle: single_quotes
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Metrics/LineLength:
+  Max: 80
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*_spec.rb'
+    - '**/*.gemspec'
+
+Layout/IndentationConsistency:
+  EnforcedStyle: normal
+
+Style/BlockDelimiters:
+  Enabled: true
+
+RSpec/FilePath:
+  Exclude:
+    - 'spec/**/*_spec.rb'
+
+RSpec/DescribedClass:
+  Exclude:
+    - 'spec/integration/*_spec.rb'
