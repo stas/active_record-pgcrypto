@@ -1,4 +1,4 @@
-# PGCrypto for ActiveRecord :lock_with_ink_pen:
+# PGCrypto for ActiveRecord 🆊
 
 [PostgreSQL PGCrypto](https://www.postgresql.org/docs/current/pgcrypto.html)
 support for ActiveRecord models.
@@ -42,11 +42,15 @@ gem 'active_record_pgcrypto'
 
 And then execute:
 
-    $ bundle
+```ruby
+$ bundle
+```
 
 Or install it yourself as:
 
-    $ gem install active_record_pgcrypto
+```ruby
+$ gem install active_record_pgcrypto
+```
 
 ## Usage
 
@@ -61,7 +65,7 @@ ActiveRecord::PGCrypto::SymmetricCoder.pgcrypto_key = ENV['PGCRYPTO_SYM_KEY']
 
 Now enable the coder for your model attributes:
 
-```
+```ruby
 class MyModel < ActiveRecord::Base
   serialize(:email, ActiveRecord::PGCrypto::SymmetricCoder)
 end
@@ -70,7 +74,7 @@ end
 The coder provides a simple API to help you provide search support by leveraging
 Arel API:
 
-```
+```ruby
 class MyModel < ActiveRecord::Base
   serialize(:email, ActiveRecord::PGCrypto::SymmetricCoder)
 
@@ -82,7 +86,7 @@ end
 
 Now you can use add it to your `ActiveRecord::Base#where` queries:
 
-```
+```ruby
 MyModel.where(MyModel.decrypted_email.eq('keyword'))
 ```
 
