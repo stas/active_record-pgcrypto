@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    active_record_pgcrypto (0.1.0)
+    active_record-pgcrypto (0.1.0)
       activerecord
 
 GEM
@@ -77,7 +77,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  active_record_pgcrypto!
+  active_record-pgcrypto!
   bundler
   ffaker
   pg

@@ -3,14 +3,14 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'active_record/pgcrypto/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'active_record_pgcrypto'
+  spec.name          = 'active_record-pgcrypto'
   spec.version       = ActiveRecord::PGCrypto::VERSION
   spec.authors       = ['Stas SUȘCOV']
   spec.email         = ['stas@nerd.ro']
 
   spec.summary       = 'PGCrypto for ActiveRecord'
   spec.description   = 'PostgreSQL PGCrypto support for ActiveRecord models.'
-  spec.homepage      = 'https://github.com/stas/active_record_pgcrypto'
+  spec.homepage      = 'https://github.com/stas/active_record-pgcrypto'
   spec.license       = 'MIT'
 
   # Specify which files should be added to the gem when it is released.

@@ -37,7 +37,7 @@ this functionality in my projects.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'active_record_pgcrypto'
+gem 'active_record-pgcrypto'
 ```
 
 And then execute:
@@ -49,7 +49,7 @@ $ bundle
 Or install it yourself as:
 
 ```ruby
-$ gem install active_record_pgcrypto
+$ gem install active_record-pgcrypto
 ```
 
 ## Usage
@@ -106,7 +106,7 @@ push git commits and tags, and push the `.gem` file to
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at
-https://github.com/stas/active_record_pgcrypto. This project is intended to be
+https://github.com/stas/active_record-pgcrypto. This project is intended to be
 a safe, welcoming space for collaboration, and contributors are expected to
 adhere to the [Contributor Covenant](http://contributor-covenant.org) code of
 conduct.
@@ -119,4 +119,4 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 Everyone interacting with this project codebase, issue
 tracker, chat rooms and mailing list is expected to follow the [code of
-conduct](https://github.com/[USERNAME]/active_record_pgcrypto/blob/master/CODE_OF_CONDUCT.md).
+conduct](https://github.com/[USERNAME]/active_record-pgcrypto/blob/master/CODE_OF_CONDUCT.md).
