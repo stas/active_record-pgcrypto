@@ -1,5 +1,6 @@
-require 'active_record/pgcrypto/version'
+require 'active_support'
 require 'active_record/log_subscriber'
+require 'active_record/pgcrypto/version'
 require 'active_record/pgcrypto/symmetric_coder'
 require 'active_record/pgcrypto/log_subscriber'
 
@@ -10,7 +11,7 @@ module ActiveRecord
     #
     # @return [NilClass]
     def self.enable_log_subscriber!
-      ActiveRecord::LogSubscriber.prepend(ActiveRecord::PGCrypto::LogSubscriber)
+      ::ActiveRecord::LogSubscriber.prepend(LogSubscriber)
     end
   end
 end

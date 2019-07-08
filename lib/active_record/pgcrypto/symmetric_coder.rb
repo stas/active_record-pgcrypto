@@ -2,17 +2,15 @@ module ActiveRecord
   module PGCrypto
     # PGCrypto symmetric encryption/decryption coder for attribute serialization
     module SymmetricCoder
-      mattr_accessor :pgcrypto_key, default: ENV['PGCRYPTO_SYM_KEY']
-      mattr_accessor(
-        :pgcrypto_options,
-        default: (
-          ENV['PGCRYPTO_SYM_OPTIONS'] || 'cipher-algo=aes256, unicode-mode=1'
-        )
-      )
-      mattr_accessor(
-        :pgcrypto_encoding,
-        default: Encoding.find(ENV['PGCRYPTO_ENCODING'] || 'utf-8')
-      )
+      mattr_accessor :pgcrypto_key do
+        ENV['PGCRYPTO_SYM_KEY']
+      end
+      mattr_accessor :pgcrypto_options do
+        ENV['PGCRYPTO_SYM_OPTIONS'] || 'cipher-algo=aes256, unicode-mode=1'
+      end
+      mattr_accessor :pgcrypto_encoding do
+        Encoding.find(ENV['PGCRYPTO_ENCODING'] || 'utf-8')
+      end
 
       # Decrypts the requested value
       #
@@ -73,8 +71,13 @@ module ActiveRecord
       #
       # @return [String] the first returned value
       def self.arel_query(arel_nodes)
-        query = Arel::SelectManager.new(nil).project(arel_nodes).to_sql
+        sel_manager = Arel::SelectManager.new(nil)
 
+        if ::ActiveRecord::VERSION::MAJOR == 4
+          sel_manager = Arel::SelectManager.new(::ActiveRecord::Base)
+        end
+
+        query = sel_manager.project(arel_nodes).to_sql
         ::ActiveRecord::Base.connection.select_value(query)
       end
 
