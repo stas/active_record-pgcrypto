@@ -14,4 +14,4 @@ ENV DATABASE_URL=postgresql://postgres@localhost/postgres?pool=5
 
 ENTRYPOINT []
 
-CMD ["sh", "-c", "(nohup /docker-entrypoint.sh postgres > /dev/null &) && sleep 3 && bundle exec rake"]
+CMD ["sh", "-c", "(nohup /docker-entrypoint.sh postgres > /dev/null &) && sleep 3 && bundle install && bundle exec rake"]
