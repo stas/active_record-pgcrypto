@@ -19,7 +19,7 @@ Gem::Specification.new do |spec|
   end
   spec.require_paths = ['lib']
 
-  spec.add_dependency 'activerecord', ENV['RAILS_VERSION']
+  spec.add_dependency 'activerecord', (ENV['RAILS_VERSION'] || '>= 3.2')
 
   pg_version = '< 1' if ENV['RAILS_VERSION'].to_s.split(' ').last.to_i == 4
 
