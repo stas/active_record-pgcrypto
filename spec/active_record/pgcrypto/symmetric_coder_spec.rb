@@ -14,7 +14,9 @@ RSpec.describe ActiveRecord::PGCrypto::SymmetricCoder do
 
   context 'with encrypted text' do
     it { expect(described_class.dump(text)).not_to eq(text) }
+
     it { expect(described_class.dump(text)).not_to be_blank }
+
     it do
       expect(described_class.load(described_class.dump(text))).to eq(text)
     end
@@ -22,7 +24,9 @@ RSpec.describe ActiveRecord::PGCrypto::SymmetricCoder do
 
   context 'with encrypted numeric' do
     it { expect(described_class.dump(numeric)).not_to eq(numeric.to_s) }
+
     it { expect(described_class.dump(numeric)).not_to be_blank }
+
     it do
       expect(
         described_class.load(described_class.dump(numeric))

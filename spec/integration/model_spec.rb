@@ -12,4 +12,18 @@ RSpec.describe User do
     expect(filtered.count).to eq(1)
     expect(filtered.first).to eq(good_user)
   end
+
+  it 'stays unchanged' do
+    good_user.reload
+    expect(good_user).not_to be_changed
+
+    good_user.email = good_user.reload.email
+    expect(good_user).not_to be_changed
+
+    good_user.email = FFaker::Internet.email
+    expect(good_user).to be_changed
+
+    good_user.reload
+    expect(good_user).not_to be_changed
+  end
 end

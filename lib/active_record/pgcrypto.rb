@@ -1,6 +1,7 @@
 require 'active_support'
 require 'active_record/log_subscriber'
 require 'active_record/pgcrypto/version'
+require 'active_record/pgcrypto/patches'
 require 'active_record/pgcrypto/symmetric_coder'
 require 'active_record/pgcrypto/log_subscriber'
 
