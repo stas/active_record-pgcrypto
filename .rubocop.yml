@@ -45,3 +45,6 @@ RSpec/FilePath:
 RSpec/DescribedClass:
   Exclude:
     - 'spec/integration/*_spec.rb'
+
+RSpec/ExampleLength:
+  Enabled: false
