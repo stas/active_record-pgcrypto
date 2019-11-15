@@ -1,0 +1,20 @@
+name: CI
+
+on: [push]
+
+jobs:
+  ci:
+    runs-on: ubuntu-18.04
+
+    strategy:
+      matrix:
+        rails: [4, 5, 6]
+
+    steps:
+    - uses: actions/checkout@master
+
+    - name: Builds the Docker image
+      run: docker build -f Dockerfile -t active_record-pgcrypto/ci:$GITHUB_SHA .
+
+    - name: Runs code QA and tests
+      run: docker run -e RAILS_VERSION="~> ${{ matrix.rails }}" active_record-pgcrypto/ci:$GITHUB_SHA
