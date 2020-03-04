@@ -71,15 +71,16 @@ class MyModel < ActiveRecord::Base
 end
 ```
 
-The coder provides a simple API to help you provide search support by leveraging
-Arel API:
+The coder provides a simple API to help you provide search support by
+leveraging the Arel API:
 
 ```ruby
 class MyModel < ActiveRecord::Base
   serialize(:email, ActiveRecord::PGCrypto::SymmetricCoder)
 
   def self.decrypted_email
-    ActiveRecord::PGCrypto::SymmetricCoder.decrypted_arel(arel_table[:email])
+    ActiveRecord::PGCrypto::SymmetricCoder
+      .decrypted_arel_text(arel_table[:email])
   end
 end
 ```
@@ -87,21 +88,23 @@ end
 Now you can use add it to your `ActiveRecord::Base#where` queries:
 
 ```ruby
-MyModel.where(MyModel.decrypted_email.eq('keyword'))
+MyModel.where(MyModel.decrypted_email.matches('keyword%'))
 ```
 
 ## Development
 
-After checking out the repo, run `bundle` to install dependencies.
+Build the Docker image first:
 
-Then, run `rake` to run the tests.
+```
+docker build -f Dockerfile -t active_record-pgcrypto/ci ./`
+```
 
-To install this gem onto your local machine, run `bundle exec rake install`.
+Now you can run the tests:
 
-To release a new version, update the version number in `version.rb`, and then
-run `bundle exec rake release`, which will create a git tag for the version,
-push git commits and tags, and push the `.gem` file to
-[rubygems.org](https://rubygems.org).
+```
+docker run -v `pwd`:/gem -it active_record-pgcrypto/ci
+```
+
 
 ## Contributing
 

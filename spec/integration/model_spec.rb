@@ -8,7 +8,10 @@ RSpec.describe User do
   it 'finds the searched user' do
     expect(good_user.email).not_to eq(bad_user.email)
 
-    filtered = User.where(User.decrypted_email.eq(good_user.email))
+    filtered = User.where(
+      User.decrypted_email.matches(good_user.email.first(4) + '%')
+    )
+
     expect(filtered.count).to eq(1)
     expect(filtered.first).to eq(good_user)
   end

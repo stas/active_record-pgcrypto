@@ -55,6 +55,18 @@ module ActiveRecord
         )
       end
 
+      # Wraps a node for decryption and text encoded calls
+      #
+      # @return [Arel::Node]
+      def self.decrypted_arel_text(node)
+        Arel::Nodes::NamedFunction.new(
+          'ENCODE', [
+            decrypted_arel(node),
+            Arel::Nodes::Quoted.new('escape')
+          ]
+        )
+      end
+
       # Wraps the value into an [Arel::Node] with SQL calls for decryption
       #
       # @return [Arel::Node]

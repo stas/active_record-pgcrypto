@@ -21,6 +21,7 @@ class User < ActiveRecord::Base
   serialize(:email, ActiveRecord::PGCrypto::SymmetricCoder)
 
   def self.decrypted_email
-    ActiveRecord::PGCrypto::SymmetricCoder.decrypted_arel(arel_table[:email])
+    ActiveRecord::PGCrypto::SymmetricCoder
+      .decrypted_arel_text(arel_table[:email])
   end
 end
