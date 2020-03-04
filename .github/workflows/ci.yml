@@ -1,20 +1,47 @@
 name: CI
 
-on: [push]
+on: [push, pull_request]
 
 jobs:
-  ci:
+  ruby_rails_matrix:
     runs-on: ubuntu-18.04
+
+    services:
+      postgres:
+        image: postgres:11.6
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: postgres
+        ports:
+          - 5432/tcp
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
 
     strategy:
       matrix:
+        ruby: [2.4, 2.7]
         rails: [4, 5, 6]
+        exclude:
+          - ruby: 2.4
+            rails: 6
+          - ruby: 2.7
+            rails: 4
 
     steps:
     - uses: actions/checkout@master
 
-    - name: Builds the Docker image
-      run: docker build -f Dockerfile -t active_record-pgcrypto/ci:$GITHUB_SHA .
+    - name: Sets up the environment
+      uses: actions/setup-ruby@v1
+      with:
+        ruby-version: ${{ matrix.ruby }}
 
     - name: Runs code QA and tests
-      run: docker run -e RAILS_VERSION="~> ${{ matrix.rails }}" active_record-pgcrypto/ci:$GITHUB_SHA
+      env:
+        RAILS_VERSION: ~> ${{ matrix.rails }}
+        DATABASE_URL: postgresql://postgres:postgres@localhost:${{ job.services.postgres.ports[5432] }}/postgres?pool=5
+      run: |
+        rm -rf Gemfile.lock
+        gem uninstall bundler -a --force
+        gem install bundler -v '~> 1'
+        bundle
+        rake

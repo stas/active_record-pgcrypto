@@ -1,4 +1,4 @@
-FROM postgres:10.5-alpine
+FROM postgres:11.6-alpine
 
 RUN apk add --no-cache git build-base ruby ruby-full ruby-dev
 
