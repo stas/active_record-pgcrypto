@@ -13,15 +13,13 @@ Gem::Specification.new do |spec|
   spec.homepage      = 'https://github.com/stas/active_record-pgcrypto'
   spec.license       = 'MIT'
 
-  # Specify which files should be added to the gem when it is released.
-  spec.files         = Dir.chdir(File.expand_path(__dir__)) do
-    `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(spec)/}) }
-  end
+  spec.files         = Dir.glob('{lib,spec}/**/*', File::FNM_DOTMATCH)
+  spec.files        += %w[LICENSE.txt README.md]
   spec.require_paths = ['lib']
 
   spec.add_dependency 'activerecord', (ENV['RAILS_VERSION'] || '>= 3.2')
 
-  pg_version = '< 1' if ENV['RAILS_VERSION'].to_s.split(' ').last.to_i == 4
+  pg_version = '< 1' if ENV['RAILS_VERSION'].to_s.split.last.to_i == 4
 
   spec.add_development_dependency 'bundler'
   spec.add_development_dependency 'ffaker'
