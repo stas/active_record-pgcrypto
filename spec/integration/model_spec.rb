@@ -9,7 +9,7 @@ RSpec.describe User do
     expect(good_user.email).not_to eq(bad_user.email)
 
     filtered = User.where(
-      User.decrypted_email.matches(good_user.email.first(4) + '%')
+      User.decrypted_email.matches("#{good_user.email.first(4)}%")
     )
 
     expect(filtered.count).to eq(1)

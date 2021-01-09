@@ -2,6 +2,10 @@ require:
   - rubocop-performance
   - rubocop-rspec
 
+AllCops:
+  NewCops: enable
+  SuggestExtensions: false
+
 RSpec:
   Enabled: true
 
@@ -16,6 +20,9 @@ Bundler:
 
 Gemspec:
   Enabled: true
+
+Gemspec/RequiredRubyVersion:
+  Enabled: false
 
 Style/StringLiterals:
   Enabled: true
