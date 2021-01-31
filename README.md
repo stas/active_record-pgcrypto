@@ -71,6 +71,8 @@ class MyModel < ActiveRecord::Base
 end
 ```
 
+NOTE: In order for the encrypted data to be store the column must be of type `binary`.
+
 The coder provides a simple API to help you provide search support by
 leveraging the Arel API:
 
