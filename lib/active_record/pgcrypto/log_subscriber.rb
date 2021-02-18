@@ -12,11 +12,7 @@ module ActiveRecord
       #
       # @return [NilClass]
       def sql(event)
-        scrubbed_sql = event.payload[:sql].gsub(REGEXP) do |_|
-          "#{$LAST_MATCH_INFO[:operation]}(#{PLACEHOLDER})"
-        end
-
-        event.payload[:sql] = scrubbed_sql
+        event.payload[:sql] = event.payload[:sql].gsub(REGEXP, PLACEHOLDER)
 
         super(event)
       end
