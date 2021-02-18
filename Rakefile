@@ -19,5 +19,5 @@ RuboCop::RakeTask.new('qa:code')
 desc('Run QA tasks')
 task(qa: ['qa:docs', 'qa:code'])
 
-RSpec::Core::RakeTask.new(spec: :qa)
-task(default: :spec)
+RSpec::Core::RakeTask.new(:spec)
+task(default: %i[qa spec])
