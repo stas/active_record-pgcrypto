@@ -17,7 +17,7 @@ Gem::Specification.new do |spec|
   spec.files        += %w[LICENSE.txt README.md]
   spec.require_paths = ['lib']
 
-  spec.add_dependency 'activerecord', (ENV['RAILS_VERSION'] || '>= 3.2')
+  spec.add_dependency 'activerecord', ENV.fetch('RAILS_VERSION', '>= 3.2')
 
   pg_version = '< 1' if ENV['RAILS_VERSION'].to_s.split.last.to_i == 4
 
@@ -30,4 +30,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rubocop-rspec'
   spec.add_development_dependency 'simplecov'
   spec.add_development_dependency 'yardstick'
+  spec.metadata['rubygems_mfa_required'] = 'true'
 end

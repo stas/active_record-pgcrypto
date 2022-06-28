@@ -2,8 +2,8 @@ require 'active_record'
 require 'logger'
 
 ActiveRecord::Base.logger = Logger.new($stdout)
-ActiveRecord::Base.logger.level = ENV['LOG_LEVEL'] || Logger::WARN
-ActiveRecord::Base.establish_connection(ENV['DATABASE_URL'])
+ActiveRecord::Base.logger.level = ENV.fetch('LOG_LEVEL') { Logger::WARN }
+ActiveRecord::Base.establish_connection(ENV.fetch('DATABASE_URL', nil))
 
 ActiveRecord::Schema.define do
   enable_extension 'pgcrypto'

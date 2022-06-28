@@ -3,13 +3,13 @@ module ActiveRecord
     # PGCrypto symmetric encryption/decryption coder for attribute serialization
     module SymmetricCoder
       mattr_accessor :pgcrypto_key do
-        ENV['PGCRYPTO_SYM_KEY']
+        ENV.fetch('PGCRYPTO_SYM_KEY', nil)
       end
       mattr_accessor :pgcrypto_options do
-        ENV['PGCRYPTO_SYM_OPTIONS'] || 'cipher-algo=aes256, unicode-mode=1'
+        ENV.fetch('PGCRYPTO_SYM_OPTIONS', 'cipher-algo=aes256, unicode-mode=1')
       end
       mattr_accessor :pgcrypto_encoding do
-        Encoding.find(ENV['PGCRYPTO_ENCODING'] || 'utf-8')
+        Encoding.find(ENV.fetch('PGCRYPTO_ENCODING', 'utf-8'))
       end
 
       # Decrypts the requested value
