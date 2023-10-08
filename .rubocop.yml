@@ -55,3 +55,6 @@ RSpec/DescribedClass:
 
 RSpec/ExampleLength:
   Enabled: false
+
+RSpec/SpecFilePathFormat:
+  Enabled: false
