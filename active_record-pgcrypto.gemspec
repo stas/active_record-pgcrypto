@@ -19,16 +19,5 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'activerecord', ENV.fetch('RAILS_VERSION', '>= 3.2')
 
-  pg_version = '< 1' if ENV['RAILS_VERSION'].to_s.split.last.to_i == 4
-
-  spec.add_development_dependency 'bundler'
-  spec.add_development_dependency 'ffaker'
-  spec.add_development_dependency 'pg', pg_version
-  spec.add_development_dependency 'rake'
-  spec.add_development_dependency 'rspec'
-  spec.add_development_dependency 'rubocop-performance'
-  spec.add_development_dependency 'rubocop-rspec'
-  spec.add_development_dependency 'simplecov'
-  spec.add_development_dependency 'yardstick'
   spec.metadata['rubygems_mfa_required'] = 'true'
 end
